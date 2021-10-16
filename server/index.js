@@ -30,12 +30,22 @@ app.get("/api/fortune", (req, res) => {
            "Take the high road.",
   ];
 
-  // choose random compliment
+  // choose random fortune
   let rIndex = Math.floor(Math.random() * fortunes.length);
   let randomFortune = fortunes[rIndex];
 
   res.status(200).send(randomFortune);
   
 });
+
+app.get("/api/color", (req, res) => {
+  const colors = ['red', 'blue', 'green', 'purple', 'yellow', 'orange']
+
+  // choose random color
+  let rColor = Math.floor(Math.random() * colors.length)
+  let randomColor = colors[rColor]
+
+  res.status(200).send(randomColor)
+})
 
 app.listen(4000, () => console.log("Unity 4000"));
