@@ -22,4 +22,20 @@ app.get("/api/compliment", (req, res) => {
   
 });
 
-app.listen(4000, () => console.log("Server running on 4000"));
+app.get("/api/fortune", (req, res) => {
+  const fortunes = ["All will go well with your new project.",
+					 "Be careful or you could fall for some tricks today.",
+					 "Advice is like kissing. It costs nothing and is a pleasant thing to do.",
+           "Any decision you have to make tomorrow is a good decision.",
+           "Take the high road.",
+  ];
+
+  // choose random compliment
+  let rIndex = Math.floor(Math.random() * fortunes.length);
+  let randomFortune = fortunes[rIndex];
+
+  res.status(200).send(randomFortune);
+  
+});
+
+app.listen(4000, () => console.log("Unity 4000"));
