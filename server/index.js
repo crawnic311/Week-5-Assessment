@@ -8,6 +8,8 @@ app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
 
+const ctrl = require('./controller')
+
 app.get("/api/compliment", (req, res) => {
   const compliments = ["Gee, you're a smart cookie!",
 					 "Cool shirt!",
@@ -47,5 +49,14 @@ app.get("/api/color", (req, res) => {
 
   res.status(200).send(randomColor)
 })
+
+app.get("/api/encrypt", (req, res) => {
+  let message = 
+
+  res.status(200).send()
+}
+  
+
+ 
 
 app.listen(4000, () => console.log("Unity 4000"));
