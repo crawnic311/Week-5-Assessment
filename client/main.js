@@ -1,18 +1,6 @@
-function submitHandler(e) {
-    e.preventDefault()
+ const form = document.querySelector('form')
 
-    let address = document.querySelector('#address')
-    let price = document.querySelector('#price')
-    let imageURL = document.querySelector('#img')
-
-    let bodyObj = {
-        address: address.value,
-        price: price.value, 
-        imageURL: imageURL.value
-    }
-
-
-
+ 
  document.getElementById("complimentButton").onclick = function () {
      axios.get("http://localhost:4000/api/compliment/")
         .then(function (response) {
@@ -38,9 +26,32 @@ document.getElementById("colorButton").onclick = function () {
         });
 };
 
-document.getElementById("encryptSubmit").onclick = function () {
+
+document.getElementById("encrypt").onclick = function () {
     axios.get("http://localhost:4000/api/encrypt/")
         .then(function (response) {
-            const data = response.data
-        })
-}
+            let cipher = +response.data
+            //console.log(cipher)
+            let oMessage = document.getElementById('oMessage')
+            let arr = oMessage.value.split('')
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].charCodeAt(0) + cipher
+            }
+            let eMessage = document.getElementById('eMessage')
+            let eArr = []
+            for(let i = 0; i < arr.length; i++) {
+                eArr.push(String.fromCharCode(arr[i]))
+            }
+            
+            eMessage.value = eArr.join("")
+        });
+};
+
+
+
+
+
+
+
+
+
