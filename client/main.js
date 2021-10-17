@@ -26,6 +26,30 @@ document.getElementById("colorButton").onclick = function () {
         });
 };
 
+document.getElementById('plus').onclick = function () {
+    axios.get("http://localhost:4000/api/plus/")
+        .then(function (response) {
+            const dataArr = response.data
+            let h = dataArr[0]
+            let w = dataArr[1]
+            let doge = document.getElementById('doge')
+            doge.height += h
+            doge.width += w
+        })
+}
+
+document.getElementById('minus').onclick = function () {
+    axios.get("http://localhost:4000/api/minus/")
+        .then(function (response) {
+            const dataArr = response.data
+            let h = dataArr[0]
+            let w = dataArr[1]
+            let doge = document.getElementById('doge')
+            doge.height -= h
+            doge.width -= w
+        })
+}
+
 
 document.getElementById("encrypt").onclick = function () {
     axios.get("http://localhost:4000/api/encrypt/")
